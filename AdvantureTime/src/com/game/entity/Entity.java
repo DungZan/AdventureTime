@@ -1,5 +1,7 @@
 package com.game.entity;
 
+import com.game.Windows.GamePanel;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -7,11 +9,16 @@ import static com.game.effect.ImageManager1.*;
 
 public class Entity {
     public int wolrdX,wolrdY;
-    public Rectangle solidArea;
+    public Rectangle solidArea = new Rectangle(0,0,48,48);
     public int solidDefaultX,solidDefaultY;
     public boolean collisionOn = false;
     public String direction;
     public int speed;
+    GamePanel gamePanel;
+
+    public Entity(GamePanel gamePanel){
+        this.gamePanel = gamePanel;
+    }
 
     public void moveUp(){
         wolrdY-=speed;
@@ -45,14 +52,6 @@ public class Entity {
 
     public int getSpeed() {
         return speed;
-    }
-
-    public Rectangle getSoildArea() {
-        return solidArea;
-    }
-
-    public void setSoildArea(Rectangle soildArea) {
-        this.solidArea = soildArea;
     }
 
     public boolean isCollisionOn() {

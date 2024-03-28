@@ -4,6 +4,7 @@ import com.game.Windows.CollisionChecker;
 import com.game.Windows.GameFrame;
 import com.game.Windows.GamePanel;
 import com.game.Windows.InputManager;
+import com.game.effect.Animation;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
@@ -12,14 +13,15 @@ import java.awt.image.BufferedImage;
 import static com.game.effect.ImageManager1.*;
 
 public class Player extends Entity {
-    GamePanel gamePanel;
     InputManager inputManager;
     private int count=0,test=1;
     public final int screenX=GameFrame.SC_WIDTH/2-(GameFrame.TILE_SIZE/2);
     public final int screenY=GameFrame.SC_HEIGHT/2-(GameFrame.TILE_SIZE/2);
     public int hasKey=0;
+    Animation animation = new Animation(gamePanel);
 
     public Player(GamePanel gamePanel,InputManager inputManager) {
+        super(gamePanel);
         this.gamePanel = gamePanel;
         this.inputManager = inputManager;
         this.setDefaultPosition();
@@ -38,7 +40,10 @@ public class Player extends Entity {
         this.setSpeed(5);
     }
     public void update(){
-       if (inputManager.isRight==true || inputManager.isLeft==true || inputManager.isUp==true || inputManager.isDown==true) {
+       if (inputManager.isRight==true ||
+               inputManager.isLeft==true ||
+               inputManager.isUp==true ||
+               inputManager.isDown==true) {
 
             if (inputManager.isRight) {
                 // moveRight();
@@ -91,6 +96,7 @@ public class Player extends Entity {
                     test = 1;
                 count = 0;
             }
+
        }
     }
     public void pickUpObject(int index){
@@ -159,6 +165,10 @@ public class Player extends Entity {
                     image = SPR_blue_square[2];
                 break;
         }
+
+//        animation.setFrames(SPR_blue_normal);
+//        animation.setDelay(100);
+//        BufferedImage image = animation.getImage();
         g2.drawImage(image,screenX,screenY, GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
 
     }

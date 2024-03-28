@@ -1,5 +1,6 @@
 package com.game.Windows;
 
+import com.game.effect.Animation;
 import com.game.effect.ImageManager1;
 import com.game.entity.Player;
 import com.game.entity.TileManager;
@@ -31,6 +32,11 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     //sound
     Sound music = new Sound();
     Sound se = new Sound();
+    //game state
+    public int gameState;
+    public static final int menuState =0;
+    public static final int playState =1;
+    public static final int pauseState =2;
     public GamePanel(){
         this.setBackground(Color.darkGray);
         ImageManager1 imageManager1 = new ImageManager1();
@@ -38,27 +44,41 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     public void setupGame(){
         assetSetter.setObjects();
         playMusic(1);
+        gameState = menuState;
     }
     public void update(){
-        player.update();
+        if (gameState == playState){
+            player.update();
+
+        }
+        if (gameState == pauseState){
+            //pause game
+
+        }
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        // draw tile
-        tileManager.draw(g2);
-        // draw object
-        for (int i=0;i<obj.length;i++){
-            if (obj[i]!=null){
-                obj[i].draw(g2,this);
+        if (gameState == menuState){
+            //draw menu
+            ui.draw(g2);
+        }else {
+            // draw tile
+            tileManager.draw(g2);
+            // draw object
+            for (int i=0;i<obj.length;i++){
+                if (obj[i]!=null){
+                    obj[i].draw(g2,this);
+                }
             }
+            //draw player
+            player.draw(g2);
+            //draw UI
+            ui.draw(g2);
+            g2.dispose();
         }
-        //draw player
-        player.draw(g2);
-        //draw UI
-        ui.draw(g2);
-        g2.dispose();
+
     }
     public void playMusic(int i){
         music.setFile(i);
@@ -103,7 +123,6 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
                 delta--;
                 drawCount++;
             }
-
             // show FPS
             if (timer >= 1e9) {
                 System.out.println("FPS: " + drawCount);
@@ -122,12 +141,12 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         //System.out.println("Bạn đang bấm");
-        inputManager.processKeyPressed(e.getKeyCode());
+        inputManager.processKeyPressed(e.getKeyCode(),this);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         //System.out.println("Bạn đã bỏ bấm");
-        inputManager.processKeyReleased(e.getKeyCode());
+        inputManager.processKeyReleased(e.getKeyCode(),this);
     }
 }

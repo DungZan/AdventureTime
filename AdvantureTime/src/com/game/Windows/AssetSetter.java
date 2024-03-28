@@ -11,28 +11,28 @@ public class AssetSetter {
     }
     public void setObjects(){
      gamePanel.obj[0] = new OBJ_Key();
-     gamePanel.obj[0].worldX = 23*GameFrame.TILE_SIZE;
-     gamePanel.obj[0].worldY = 7*GameFrame.TILE_SIZE;
+     gamePanel.obj[0].worldX = 27*GameFrame.TILE_SIZE;
+     gamePanel.obj[0].worldY = 10*GameFrame.TILE_SIZE;
 
      gamePanel.obj[1] = new OBJ_Key();
-     gamePanel.obj[1].worldX = 23*GameFrame.TILE_SIZE;
-     gamePanel.obj[1].worldY = 40*GameFrame.TILE_SIZE;
+     gamePanel.obj[1].worldX = 31*GameFrame.TILE_SIZE;
+     gamePanel.obj[1].worldY = 44*GameFrame.TILE_SIZE;
 
      gamePanel.obj[2] = new OBJ_Key();
-     gamePanel.obj[2].worldX = 37*GameFrame.TILE_SIZE;
-     gamePanel.obj[2].worldY = 7*GameFrame.TILE_SIZE;
+     gamePanel.obj[2].worldX = 30*GameFrame.TILE_SIZE;
+     gamePanel.obj[2].worldY = 43*GameFrame.TILE_SIZE;
 
      gamePanel.obj[3] = new OBJ_Door();
-     gamePanel.obj[3].worldX = 10*GameFrame.TILE_SIZE;
-     gamePanel.obj[3].worldY = 11*GameFrame.TILE_SIZE;
+     gamePanel.obj[3].worldX = 34*GameFrame.TILE_SIZE;
+     gamePanel.obj[3].worldY = 27*GameFrame.TILE_SIZE;
 
      gamePanel.obj[4] = new OBJ_Door();
-     gamePanel.obj[4].worldX = 12*GameFrame.TILE_SIZE;
-     gamePanel.obj[4].worldY = 22*GameFrame.TILE_SIZE;
+     gamePanel.obj[4].worldX = 18*GameFrame.TILE_SIZE;
+     gamePanel.obj[4].worldY = 28*GameFrame.TILE_SIZE;
 
      gamePanel.obj[5] = new OBJ_Door();
-     gamePanel.obj[5].worldX = 10*GameFrame.TILE_SIZE;
-     gamePanel.obj[5].worldY = 7*GameFrame.TILE_SIZE;
+     gamePanel.obj[5].worldX = 8*GameFrame.TILE_SIZE;
+     gamePanel.obj[5].worldY = 23*GameFrame.TILE_SIZE;
 
 
      gamePanel.obj[6] = new OBJ_Boots();

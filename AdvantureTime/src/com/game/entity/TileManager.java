@@ -3,6 +3,7 @@ package com.game.entity;
 import com.game.Windows.GameFrame;
 import com.game.Windows.GamePanel;
 import com.game.Windows.InputManager;
+import com.game.Windows.UtilityTool;
 import com.game.effect.ImageManager;
 
 import javax.imageio.ImageIO;
@@ -53,142 +54,56 @@ public class TileManager {
         }
     }
     public void getImageMap() {
-        try {
-            tiles[0] = new Tile();
-            tiles[0].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/000.png")));
+            setupImage(0,"000",false);
+            setupImage(1,"001",false);
+            setupImage(2,"002",false);
+            setupImage(3,"003",false);
+            setupImage(4,"004",false);
+            setupImage(5,"005",false);
+            setupImage(6,"006",false);
+            setupImage(7,"007",false);
+            setupImage(8,"008",false);
+            setupImage(9,"009",false);
+            setupImage(10,"010",false);
+            setupImage(11,"011",false);
+            setupImage(12,"012",false);
+            setupImage(13,"013",false);
+            setupImage(14,"014",false);
+            setupImage(15,"015",false);
+            setupImage(16,"016",true);
+            setupImage(17,"017",false);
+            setupImage(18,"018",true);
+            setupImage(19,"019",true);
+            setupImage(20,"020",true);
+            setupImage(21,"021",true);
+            setupImage(22,"022",true);
+            setupImage(23,"023",true);
+            setupImage(24,"024",true);
+            setupImage(25,"025",true);
+            setupImage(26,"026",true);
+            setupImage(27,"027",true);
+            setupImage(28,"028",true);
+            setupImage(29,"029",true);
+            setupImage(30,"030",true);
+            setupImage(31,"031",true);
+            setupImage(32,"032",false);
+            setupImage(33,"033",false);
+            setupImage(34,"034",false);
+            setupImage(35,"035",false);
+            setupImage(36,"036",false);
+            setupImage(37,"037",false);
 
-            tiles[1] = new Tile();
-            tiles[1].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/001.png")));
-            tiles[1].collision = false;
-
-            tiles[2] = new Tile();
-            tiles[2].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/002.png")));
-            tiles[2].collision=false;
-
-            tiles[3] = new Tile();
-            tiles[3].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/003.png")));
-
-            tiles[4] = new Tile();
-            tiles[4].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/004.png")));
-            tiles[4].setCollision(false);
-
-            tiles[5] = new Tile();
-            tiles[5].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/005.png")));
-
-            tiles[6] = new Tile();
-            tiles[6].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/006.png")));
-
-            tiles[7] = new Tile();
-            tiles[7].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/007.png")));
-
-            tiles[8] = new Tile();
-            tiles[8].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/008.png")));
-
-            tiles[9] = new Tile();
-            tiles[9].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/009.png")));
-
-            tiles[10] = new Tile();
-            tiles[10].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/010.png")));
-
-            tiles[11] = new Tile();
-            tiles[11].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/011.png")));
-
-            tiles[12] = new Tile();
-            tiles[12].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/012.png")));
-
-            tiles[13] = new Tile();
-            tiles[13].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/013.png")));
-
-            tiles[14] = new Tile();
-            tiles[14].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/014.png")));
-
-            tiles[15] = new Tile();
-            tiles[15].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/015.png")));
-
-            tiles[16] = new Tile();
-            tiles[16].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/016.png")));
-            tiles[16].collision=true;
-
-            tiles[17] = new Tile();
-            tiles[17].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/017.png")));
-
-            tiles[18] = new Tile();
-            tiles[18].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/018.png")));
-            tiles[18].collision=true;
-
-            tiles[19] = new Tile();
-            tiles[19].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/019.png")));
-            tiles[19].collision=true;
-
-            tiles[20] = new Tile();
-            tiles[20].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/020.png")));
-            tiles[20].collision=true;
-
-            tiles[21] = new Tile();
-            tiles[21].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/021.png")));
-            tiles[21].collision=true;
-
-            tiles[22] = new Tile();
-            tiles[22].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/022.png")));
-            tiles[22].collision=true;
-
-            tiles[23] = new Tile();
-            tiles[23].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/023.png")));
-            tiles[23].collision=true;
-
-            tiles[24] = new Tile();
-            tiles[24].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/024.png")));
-            tiles[24].collision=true;
-
-            tiles[25] = new Tile();
-            tiles[25].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/025.png")));
-            tiles[25].collision=true;
-
-            tiles[26] = new Tile();
-            tiles[26].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/026.png")));
-            tiles[26].collision=true;
-
-            tiles[27] = new Tile();
-            tiles[27].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/027.png")));
-            tiles[27].collision=true;
-
-            tiles[28] = new Tile();
-            tiles[28].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/028.png")));
-            tiles[28].collision=true;
-
-            tiles[29] = new Tile();
-            tiles[29].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/029.png")));
-            tiles[29].collision=true;
-
-            tiles[30] = new Tile();
-            tiles[30].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/030.png")));
-            tiles[30].collision=true;
-
-            tiles[31] = new Tile();
-            tiles[31].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/031.png")));
-            tiles[31].collision=true;
-
-            tiles[32] = new Tile();
-            tiles[32].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/032.png")));
-
-            tiles[33] = new Tile();
-            tiles[33].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/033.png")));
-
-            tiles[34] = new Tile();
-            tiles[34].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/034.png")));
-
-            tiles[35] = new Tile();
-            tiles[35].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/035.png")));
-
-            tiles[36] = new Tile();
-            tiles[36].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/036.png")));
-
-            tiles[37] = new Tile();
-            tiles[37].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/037.png")));
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        public void setupImage(int index,String path,boolean collision){
+            UtilityTool utilityTool = new UtilityTool();
+            try {
+                tiles[index] = new Tile();
+                tiles[index].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/"+path+".png")));
+                tiles[index].setImage(utilityTool.scaleImage(tiles[index].getImage(),GameFrame.TILE_SIZE,GameFrame.TILE_SIZE));
+                tiles[index].collision = collision;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
         }
         public void draw(Graphics2D g2){

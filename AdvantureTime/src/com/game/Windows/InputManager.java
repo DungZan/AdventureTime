@@ -3,36 +3,72 @@ package com.game.Windows;
 import java.awt.event.KeyEvent;
 
 public class InputManager {
+    GamePanel gamePanel;
     public boolean isRight,isLeft,isUp,isDown,isSpace,isEnter;
-    public void processKeyPressed(int keyCode){
-        switch (keyCode){
-            case KeyEvent.VK_W:
-                //System.out.println("Pressed W");
-                isUp= true;
-                break;
-            case KeyEvent.VK_A:
-                //System.out.println("Pressed A");
-                isLeft= true;
-                break;
-            case KeyEvent.VK_S:
-                //System.out.println("Pressed S");
-                isDown=true;
-                break;
-            case KeyEvent.VK_D:
-                //System.out.println("Pressed D");
-                isRight=true;
-                break;
-            case KeyEvent.VK_ENTER:
-                //System.out.println("Pressed Enter");
-                isEnter=true;
-                break;
-            case KeyEvent.VK_SPACE:
-                //System.out.println("Pressed Space");
-                isSpace=true;
-                break;
+    public void processKeyPressed(int keyCode,GamePanel gamePanel){
+        this.gamePanel= gamePanel;
+        if (gamePanel.gameState == gamePanel.menuState){
+            switch (keyCode){
+                case KeyEvent.VK_W:
+                    gamePanel.ui.commandNum--;
+                    if (gamePanel.ui.commandNum<0)
+                        gamePanel.ui.commandNum=2;
+                    break;
+                case KeyEvent.VK_S:
+                    gamePanel.ui.commandNum++;
+                    if (gamePanel.ui.commandNum>2)
+                        gamePanel.ui.commandNum=0;
+                    break;
+                case KeyEvent.VK_ENTER:
+                    if (gamePanel.ui.commandNum==0){
+                        gamePanel.gameState= gamePanel.playState;
+                    }
+                    if (gamePanel.ui.commandNum==1){
+                        System.out.println("comming soon...");
+                    }
+                    if (gamePanel.ui.commandNum==2){
+                        System.exit(0);
+                    }
+                    break;
+            }
         }
+        if (gamePanel.gameState== gamePanel.playState){
+            switch (keyCode){
+                case KeyEvent.VK_W:
+                    isUp= true;
+                    break;
+                case KeyEvent.VK_A:
+                    isLeft= true;
+                    break;
+                case KeyEvent.VK_S:
+                    isDown=true;
+                    break;
+                case KeyEvent.VK_D:
+                    isRight=true;
+                    break;
+                case KeyEvent.VK_SPACE:
+                    isSpace=true;
+                    break;
+                case KeyEvent.VK_P:
+                    if (gamePanel.gameState == gamePanel.playState){
+                        gamePanel.gameState = gamePanel.pauseState;
+                    }else if (gamePanel.gameState == gamePanel.pauseState){
+                        gamePanel.gameState = gamePanel.playState;
+                    }
+                    break;
+                case KeyEvent.VK_ESCAPE:
+                    if (gamePanel.gameState == gamePanel.playState){
+                        gamePanel.gameState = gamePanel.menuState;
+                    }else if (gamePanel.gameState == gamePanel.pauseState){
+                        gamePanel.gameState = gamePanel.playState;
+                    }
+                    break;
+            }
+        }
+
     }
-    public void processKeyReleased(int keyCode){
+    public void processKeyReleased(int keyCode,GamePanel gamePanel){
+        this.gamePanel= gamePanel;
         switch (keyCode){
             case KeyEvent.VK_W:
                 //System.out.println("Released W");

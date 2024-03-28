@@ -22,6 +22,7 @@ public class GameFrame extends JFrame {
         this.addKeyListener(gamePanel);
         this.setFocusable(true);
         setLocationRelativeTo(null);
+        setResizable(false);
         gamePanel.setupGame();
     }
 
