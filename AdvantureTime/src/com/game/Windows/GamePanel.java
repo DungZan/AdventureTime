@@ -20,19 +20,24 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     TileManager tileManager = new TileManager(this);
     //collision checker
     public CollisionChecker collisionChecker = new CollisionChecker(this);
-    //world component setting
+    public UI ui = new UI(this);
     public AssetSetter assetSetter = new AssetSetter(this);
     public SuperObject obj[] = new SuperObject[10];
+    //world component setting
     public final int maxWorldCol=50;
     public final int maxWorldRow=50;
     public final int WorldWidth=maxWorldCol*GameFrame.TILE_SIZE;
     public final int WorldHeight=maxWorldRow*GameFrame.TILE_SIZE;
+    //sound
+    Sound music = new Sound();
+    Sound se = new Sound();
     public GamePanel(){
         this.setBackground(Color.darkGray);
         ImageManager1 imageManager1 = new ImageManager1();
     }
     public void setupGame(){
         assetSetter.setObjects();
+        playMusic(1);
     }
     public void update(){
         player.update();
@@ -51,7 +56,21 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
         }
         //draw player
         player.draw(g2);
+        //draw UI
+        ui.draw(g2);
         g2.dispose();
+    }
+    public void playMusic(int i){
+        music.setFile(i);
+        music.playSound();
+        music.loop();
+    }
+    public void stopMusic(){
+        music.stop();
+    }
+    public void playSE(int i){
+        se.setFile(i);
+        se.playSound();
     }
     public void startGame(){
         if (thread == null){

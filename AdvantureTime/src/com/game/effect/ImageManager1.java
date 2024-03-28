@@ -43,6 +43,7 @@ public class ImageManager1 {
     public static BufferedImage SPR_switch_door;
     public static BufferedImage SPR_switch;
     public static BufferedImage SPR_cursor;
+    public static BufferedImage SPR_bolt;
 
     public ImageManager1() {
         loader = new ImageLoader();
@@ -88,6 +89,7 @@ public class ImageManager1 {
         SPR_switch_door = loadSprite("SwitchDoor");
         SPR_switch = loadSprite("Switch");
         SPR_cursor = loadSprite("Cursor");
+        SPR_bolt = loadSprite("Bolt");
     }
 
     private BufferedImage loadSprite(String name) {

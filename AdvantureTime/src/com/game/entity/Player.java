@@ -17,6 +17,7 @@ public class Player extends Entity {
     private int count=0,test=1;
     public final int screenX=GameFrame.SC_WIDTH/2-(GameFrame.TILE_SIZE/2);
     public final int screenY=GameFrame.SC_HEIGHT/2-(GameFrame.TILE_SIZE/2);
+    public int hasKey=0;
 
     public Player(GamePanel gamePanel,InputManager inputManager) {
         this.gamePanel = gamePanel;
@@ -37,7 +38,7 @@ public class Player extends Entity {
         this.setSpeed(5);
     }
     public void update(){
-        if (inputManager.isRight==true || inputManager.isLeft==true || inputManager.isUp==true || inputManager.isDown==true) {
+       if (inputManager.isRight==true || inputManager.isLeft==true || inputManager.isUp==true || inputManager.isDown==true) {
 
             if (inputManager.isRight) {
                 // moveRight();
@@ -59,6 +60,9 @@ public class Player extends Entity {
             // check collision
             collisionOn = false;
             gamePanel.collisionChecker.checkTile(this);
+            // check object
+            int objIndex = gamePanel.collisionChecker.checkObject(this, true);
+            pickUpObject(objIndex);
             // if collision false, player can move
             if (collisionOn == false) {
                 switch (direction) {
@@ -87,7 +91,37 @@ public class Player extends Entity {
                     test = 1;
                 count = 0;
             }
+       }
+    }
+    public void pickUpObject(int index){
+        if (index!=999){
+            String objName = gamePanel.obj[index].name;
+            switch (objName){
+                case "key":
+                    gamePanel.playSE(2);
+                    hasKey++;
+                    gamePanel.obj[index]=null;
+                    gamePanel.ui.showMessage("You got a key");
+                    break;
+                case "door":
+                    if (hasKey>0){
+                        gamePanel.playSE(0);
+                        hasKey--;
+                        gamePanel.obj[index]=null;
+                        gamePanel.ui.showMessage("You opened the door");
+                    }else {
+                        gamePanel.ui.showMessage("You need a key");
+                    }
+                    break;
+                case "Boots":
+                    gamePanel.playSE(3);
+                        gamePanel.obj[index]=null;
+                        speed+=3;
+                    gamePanel.ui.showMessage("You got boots");
+                    break;
+            }
         }
+
     }
     public void draw(Graphics2D g2){
         BufferedImage image = null;

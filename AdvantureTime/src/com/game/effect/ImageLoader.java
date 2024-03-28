@@ -1,9 +1,10 @@
+/* Author: NgTienHungg */
 package com.game.effect;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class ImageLoader {
 
