@@ -34,7 +34,4 @@ public class OBJ_Flag extends SuperObject{
             g2.drawImage(animation.getImage(),screenX,screenY, GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
         }
     }
-    public void update(){
-        animation.update();
-    }
 }
