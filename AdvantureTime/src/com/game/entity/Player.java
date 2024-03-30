@@ -165,11 +165,8 @@ public class Player extends Entity {
                     image = SPR_blue_square[2];
                 break;
         }
-
-//        animation.setFrames(SPR_blue_normal);
-//        animation.setDelay(100);
-//        BufferedImage image = animation.getImage();
-        g2.drawImage(image,screenX,screenY, GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
+        g2.drawImage(image,screenX,screenY,GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
+        //g2.drawImage(image,screenX,screenY, GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
 
     }
 

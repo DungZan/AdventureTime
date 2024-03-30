@@ -1,31 +1,41 @@
 package com.game.Windows;
 
 import com.game.effect.Animation;
+import com.game.object.OBJ_Boots;
 import com.game.object.OBJ_Key;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 
 import static com.game.effect.ImageManager1.SPR_blue_normal;
 
 public class UI {
     GamePanel gamePanel;
-    Font ariral_40,ariral_60;
-    Font ariral_80B;
+    Font pixelF,ariral_40;
+    Font ariral_80B,pixelF2;
     Graphics2D g2;
-    BufferedImage keyImage;
     boolean messageOn = false;
     String message = "";
     int messageTime = 0;
     int commandNum = 0;
     public UI(GamePanel gamePanel){
         this.gamePanel = gamePanel;
-        ariral_40 = new Font("Arial",Font.PLAIN,40);
+        try {
+            InputStream is = getClass().getResourceAsStream("/resources/font/StayPixelRegular-EaOxl.ttf");
+            pixelF = Font.createFont(Font.TRUETYPE_FONT,is);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        pixelF = pixelF.deriveFont(Font.PLAIN,80);
+        pixelF2 = pixelF.deriveFont(Font.PLAIN,60);
         ariral_80B = new Font("Arial",Font.BOLD,80);
-        ariral_60 = new Font("Arial",Font.PLAIN,60);
-
+        ariral_40 = new Font("Arial",Font.PLAIN,40);
     }
     public void showMessage(String message){
         this.message = message;
@@ -33,18 +43,25 @@ public class UI {
     }
     public void draw(Graphics2D g2){
        this.g2=g2;
-       g2.setFont(ariral_40);
-       g2.setColor(Color.white);
+//       g2.setFont(ariral_40);
+//       g2.setColor(Color.white);
          if (gamePanel.gameState == gamePanel.menuState){
              drawMenu(g2);
          }
             if (gamePanel.gameState == gamePanel.playState){
                 OBJ_Key obj_key = new OBJ_Key();
-                keyImage = obj_key.image;
+                BufferedImage keyImage = obj_key.image;
+                OBJ_Boots obj_boots = new OBJ_Boots();
+                BufferedImage bootsImage = obj_boots.image;
+
+                //g2.drawImage(gamePanel.animation.getImage(),100,100,48,48,null);
                 g2.setColor(Color.white);
                 g2.setFont(ariral_40);
                 g2.drawImage(keyImage,30,20,32,32,null);
-                g2.drawString("" + gamePanel.player.hasKey,60,50);
+                g2.drawString("x" + gamePanel.player.hasKey,60,50);
+
+                g2.drawImage(bootsImage,30,70,32,32,null);
+                g2.drawString("x" + gamePanel.player.speed,60,100);
 
                 //show message
                 if (messageOn){
@@ -81,7 +98,7 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        g2.setFont(ariral_80B);
+        g2.setFont(pixelF);
         String message = "Advanture Time";
         int x = getXforCenter(message);
         int y = GameFrame.SC_HEIGHT/2-250;
@@ -92,7 +109,7 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawString(message,x,y);
         //New Game
-        g2.setFont(ariral_60);
+        g2.setFont(pixelF2);
         g2.setColor(Color.black);
         g2.drawString("New Game",getXforCenter("New Game")+3,GameFrame.SC_HEIGHT/2+50+3);
         g2.setColor(Color.white);

@@ -2,6 +2,7 @@ package com.game.Windows;
 
 import com.game.object.OBJ_Boots;
 import com.game.object.OBJ_Door;
+import com.game.object.OBJ_Flag;
 import com.game.object.OBJ_Key;
 
 public class AssetSetter {
@@ -38,6 +39,10 @@ public class AssetSetter {
      gamePanel.obj[6] = new OBJ_Boots();
      gamePanel.obj[6].worldX = 23*GameFrame.TILE_SIZE;
      gamePanel.obj[6].worldY = 9*GameFrame.TILE_SIZE;
+
+     gamePanel.obj[7] = new OBJ_Flag();
+     gamePanel.obj[7].worldX = 23*GameFrame.TILE_SIZE;
+     gamePanel.obj[7].worldY = 10*GameFrame.TILE_SIZE;
 
 
     }

@@ -36,6 +36,7 @@ public class ImageManager1 {
     public static BufferedImage[] SPR_ground;
     public static BufferedImage[] SPR_wall;
     public static BufferedImage[] SPR_fire_lamp;
+    public static BufferedImage[] SPR_flag;
     public static BufferedImage SPR_stairs;
     public static BufferedImage SPR_box;
     public static BufferedImage SPR_key;
@@ -81,6 +82,7 @@ public class ImageManager1 {
         SPR_ground = loadSprite("ground", 4);
         SPR_wall = loadSprite("wall", 8);
         SPR_fire_lamp = loadSprite("fire_lamp", 5);
+        SPR_flag = loadSprite("Flag", 6);
 
         SPR_stairs = loadSprite("Stairs");
         SPR_box = loadSprite("Box");
