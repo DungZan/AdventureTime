@@ -1,17 +1,14 @@
 package com.game.Windows;
 
-import com.game.effect.Animation;
 import com.game.object.OBJ_Boots;
 import com.game.object.OBJ_Key;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static com.game.effect.ImageManager1.SPR_blue_normal;
+import static com.game.effect.ImageManager1.*;
 
 public class UI {
     GamePanel gamePanel;
@@ -43,12 +40,10 @@ public class UI {
     }
     public void draw(Graphics2D g2){
        this.g2=g2;
-//       g2.setFont(ariral_40);
-//       g2.setColor(Color.white);
          if (gamePanel.gameState == gamePanel.menuState){
              drawMenu(g2);
          }
-            if (gamePanel.gameState == gamePanel.playState){
+         if (gamePanel.gameState == gamePanel.playState){
                 OBJ_Key obj_key = new OBJ_Key();
                 BufferedImage keyImage = obj_key.image;
                 OBJ_Boots obj_boots = new OBJ_Boots();
@@ -65,7 +60,7 @@ public class UI {
 
                 //show message
                 if (messageOn){
-                    g2.drawString(message,40,100);
+                    g2.drawString(message,GameFrame.TILE_SIZE*1,GameFrame.TILE_SIZE*4);
                     messageTime++;
                 }
                 if (messageTime>100){
@@ -73,31 +68,46 @@ public class UI {
                     messageTime = 0;
                 }
             }
-            if (gamePanel.gameState == gamePanel.pauseState){
-                drawPauseGame();
-            }
+         if (gamePanel.gameState == gamePanel.aboutState){
+             drawAbout(g2);
+         }
     }
-    public void drawPauseGame(){
-        String message = "PAUSE";
-        int x = getXforCenter(message);
-        int y = GameFrame.SC_HEIGHT/2;
-        g2.setColor(Color.white);
-        g2.setFont(ariral_80B);
-        g2.drawString(message,x,y);
-    }
+
     public int getXforCenter(String text){
         FontMetrics fm = g2.getFontMetrics();
         int width = fm.stringWidth(text);
         return (GameFrame.SC_WIDTH-width)/2;
     }
+    public void drawAbout(Graphics2D g2){
+        this.g2 = g2;
+        g2.drawImage(SPR_background[1],0,0,GameFrame.SC_WIDTH,GameFrame.SC_HEIGHT,null);
+        g2.setFont(ariral_40);
+
+        g2.drawImage(SPR_avatar, 70, 70, 150, 150, null);
+
+        g2.drawString("221230771", getXforCenter("221230771"), 90);
+        g2.drawString("Phạm Tiến Dũng", getXforCenter("Phạm Tiến Dũng"), 140);
+
+
+        g2.drawString("ADVANTURE TIME", getXforCenter("ADVANTURE TIME"), 200);
+
+        g2.drawString("BTL JAVA - Class CNTT4 - K63", getXforCenter("BTL JAVA - Class CNTT4 - K63"), 250);
+
+        g2.drawString("--------------------------------------------------", getXforCenter("--------------------------------------------------"), 300);
+
+
+        g2.drawString("TUTORIAL", getXforCenter("TUTORIAL"), 370);
+
+        g2.drawString("Use W and A and S and D to control", getXforCenter("Use W and A and S and D to control"), 435);
+
+        g2.setColor(Color.white);
+        g2.setFont(new Font("Calibri", Font.CENTER_BASELINE, 18));
+        g2.drawString("ESC TO BACK", 950, 30);
+
+    }
     public void drawMenu(Graphics2D g2){
         this.g2 = g2;
-        try {
-            BufferedImage image = ImageIO.read(getClass().getResource("/resources/sprites/bg.png"));
-            g2.drawImage(image,0,0,GameFrame.SC_WIDTH,GameFrame.SC_HEIGHT,null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        g2.drawImage(SPR_background[0],0,0,GameFrame.SC_WIDTH,GameFrame.SC_HEIGHT,null);
         g2.setFont(pixelF);
         String message = "Advanture Time";
         int x = getXforCenter(message);

@@ -4,21 +4,18 @@ import com.game.effect.Animation;
 import com.game.effect.ImageManager1;
 import com.game.entity.Player;
 import com.game.entity.TileManager;
-import com.game.object.OBJ_Flag;
 import com.game.object.SuperObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static com.game.effect.ImageManager1.*;
 
 
-public class GamePanel extends JPanel implements Runnable,KeyListener, ActionListener {
-    public Animation animation = new Animation(this);
+public class GamePanel extends JPanel implements Runnable,KeyListener {
+    public Animation[] animation = new Animation[]{new Animation(this)};
     private Thread thread;
     private boolean isRunning;
     private InputManager inputManager = new InputManager();
@@ -43,12 +40,13 @@ public class GamePanel extends JPanel implements Runnable,KeyListener, ActionLis
     public static final int menuState =0;
     public static final int playState =1;
     public static final int pauseState =2;
+    public static final int aboutState =3;
     public GamePanel(){
         this.setBackground(Color.darkGray);
         ImageManager1 imageManager1 = new ImageManager1();
-        animation.setDelay(100);
-        animation.setFrames(SPR_fire_lamp);
-        Timer timer = new Timer(10,this);
+        animation[0].setDelay(100);
+        animation[0].setFrames(SPR_flag);
+        Timer timer = new Timer(10,e -> animation[0].update());
         timer.start();
     }
     public void setupGame(){
@@ -60,9 +58,8 @@ public class GamePanel extends JPanel implements Runnable,KeyListener, ActionLis
         if (gameState == playState){
             player.update();
         }
-        if (gameState == pauseState){
-            //pause game
-
+        if (gameState == menuState){
+            //menu
         }
     }
 
@@ -83,6 +80,7 @@ public class GamePanel extends JPanel implements Runnable,KeyListener, ActionLis
             }
             //draw player
             player.draw(g2);
+            g2.drawImage(animation[0].getImage(),26*GameFrame.TILE_SIZE-player.getWorldX() + player.screenX,27*GameFrame.TILE_SIZE-player.getWorldY() + player.screenY,48,48,null);
             //draw UI
             ui.draw(g2);
             g2.dispose();
@@ -157,10 +155,5 @@ public class GamePanel extends JPanel implements Runnable,KeyListener, ActionLis
     public void keyReleased(KeyEvent e) {
         //System.out.println("Bạn đã bỏ bấm");
         inputManager.processKeyReleased(e.getKeyCode(),this);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        animation.update();
     }
 }

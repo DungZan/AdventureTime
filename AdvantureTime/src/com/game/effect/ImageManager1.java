@@ -11,10 +11,7 @@ public class ImageManager1 {
     private ImageLoader loader;
     private final String spritePath = "/resources/sprites/";
 
-    public static BufferedImage[] SPR_avatar;
-    public static BufferedImage SPR_logo_pro;
-    public static BufferedImage SPR_logo_it;
-
+    public static BufferedImage SPR_avatar;
     public static BufferedImage SPR_mouse;
     public static BufferedImage SPR_cover;
     public static BufferedImage SPR_black;
@@ -45,6 +42,7 @@ public class ImageManager1 {
     public static BufferedImage SPR_switch;
     public static BufferedImage SPR_cursor;
     public static BufferedImage SPR_bolt;
+    public static BufferedImage[] SPR_cf;
 
     public ImageManager1() {
         loader = new ImageLoader();
@@ -52,9 +50,7 @@ public class ImageManager1 {
     }
 
     private void loadAllSprite() {
-        SPR_avatar = loadSprite("avatar", 2);
-        //SPR_logo_pro = loadSprite("/logo/");
-        //SPR_logo_it = loadSprite("/logo/");
+        SPR_avatar = loadSprite("avatar");
 
         SPR_mouse = loadSprite("Mouse");
         SPR_cover = loadSprite("Cover");
@@ -68,7 +64,7 @@ public class ImageManager1 {
         SPR_sound_off = loadSprite("SoundOff");
 
         SPR_parallax_bg = loadSprite("/parallax_bg", 4);
-        SPR_background = loadSprite("background", 3);
+        SPR_background = loadSprite("background", 2);
 
         SPR_blue_normal = loadSprite("/blue/normal", 8);
         SPR_blue_square = loadSprite("/blue/square", 8);
@@ -92,6 +88,7 @@ public class ImageManager1 {
         SPR_switch = loadSprite("Switch");
         SPR_cursor = loadSprite("Cursor");
         SPR_bolt = loadSprite("Bolt");
+        SPR_cf = loadSprite("cf",6);
     }
 
     private BufferedImage loadSprite(String name) {

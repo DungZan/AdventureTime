@@ -2,19 +2,15 @@ package com.game.entity;
 
 import com.game.Windows.GameFrame;
 import com.game.Windows.GamePanel;
-import com.game.Windows.InputManager;
 import com.game.Windows.UtilityTool;
-import com.game.effect.ImageManager;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import static com.game.effect.ImageManager1.*;
 
 public class TileManager {
     GamePanel gamePanel;

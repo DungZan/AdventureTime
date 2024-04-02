@@ -21,16 +21,22 @@ public class InputManager {
                     break;
                 case KeyEvent.VK_ENTER:
                     if (gamePanel.ui.commandNum==0){
-                        gamePanel.gameState= gamePanel.playState;
+                        gamePanel.gameState = gamePanel.playState;
                     }
                     if (gamePanel.ui.commandNum==1){
-                        System.out.println("comming soon...");
+                        gamePanel.gameState = gamePanel.aboutState;
                     }
                     if (gamePanel.ui.commandNum==2){
                         System.exit(0);
                     }
                     break;
             }
+        }
+        if (gamePanel.gameState == gamePanel.aboutState){
+            switch (keyCode){
+                case KeyEvent.VK_ESCAPE:
+                    gamePanel.gameState = gamePanel.menuState;
+                    break;}
         }
         if (gamePanel.gameState== gamePanel.playState){
             switch (keyCode){
@@ -49,18 +55,9 @@ public class InputManager {
                 case KeyEvent.VK_SPACE:
                     isSpace=true;
                     break;
-                case KeyEvent.VK_P:
-                    if (gamePanel.gameState == gamePanel.playState){
-                        gamePanel.gameState = gamePanel.pauseState;
-                    }else if (gamePanel.gameState == gamePanel.pauseState){
-                        gamePanel.gameState = gamePanel.playState;
-                    }
-                    break;
                 case KeyEvent.VK_ESCAPE:
                     if (gamePanel.gameState == gamePanel.playState){
                         gamePanel.gameState = gamePanel.menuState;
-                    }else if (gamePanel.gameState == gamePanel.pauseState){
-                        gamePanel.gameState = gamePanel.playState;
                     }
                     break;
             }
