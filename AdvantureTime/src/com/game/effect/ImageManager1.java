@@ -12,35 +12,24 @@ public class ImageManager1 {
     private final String spritePath = "/resources/sprites/";
 
     public static BufferedImage SPR_avatar;
-    public static BufferedImage SPR_mouse;
-    public static BufferedImage SPR_cover;
-    public static BufferedImage SPR_black;
-
-    public static BufferedImage SPR_title_escape;
-    public static BufferedImage SPR_title_together;
     public static BufferedImage SPR_title_congra;
 
     public static BufferedImage SPR_sound_on;
     public static BufferedImage SPR_sound_off;
-
-    public static BufferedImage[] SPR_parallax_bg;
     public static BufferedImage[] SPR_background;
 
-    public static BufferedImage[] SPR_blue_normal, SPR_blue_square;
-    public static BufferedImage[] SPR_red_normal, SPR_red_square;
-    public static BufferedImage[] SPR_green_normal, SPR_green_square;
+    public static BufferedImage[] playerUp, playerDown;
+    public static BufferedImage[] playerLeft, playerRight;
 
-    public static BufferedImage[] SPR_ground;
     public static BufferedImage[] SPR_wall;
     public static BufferedImage[] SPR_fire_lamp;
     public static BufferedImage[] SPR_flag;
     public static BufferedImage SPR_stairs;
-    public static BufferedImage SPR_box;
+    public static BufferedImage SPR_stairsUp;
     public static BufferedImage SPR_key;
     public static BufferedImage SPR_key_door;
     public static BufferedImage SPR_switch_door;
     public static BufferedImage SPR_switch;
-    public static BufferedImage SPR_cursor;
     public static BufferedImage SPR_bolt;
     public static BufferedImage[] SPR_cf;
 
@@ -52,43 +41,30 @@ public class ImageManager1 {
     private void loadAllSprite() {
         SPR_avatar = loadSprite("avatar");
 
-        SPR_mouse = loadSprite("Mouse");
-        SPR_cover = loadSprite("Cover");
-        SPR_black = loadSprite("Black");
-
-        SPR_title_escape = loadSprite("Escape");
-        SPR_title_together = loadSprite("Together");
         SPR_title_congra = loadSprite("Congratulations");
 
         SPR_sound_on = loadSprite("SoundOn");
         SPR_sound_off = loadSprite("SoundOff");
 
-        SPR_parallax_bg = loadSprite("/parallax_bg", 4);
         SPR_background = loadSprite("background", 2);
 
-        SPR_blue_normal = loadSprite("/blue/normal", 8);
-        SPR_blue_square = loadSprite("/blue/square", 8);
-
-        SPR_red_normal = loadSprite("/red/normal", 8);
-        SPR_red_square = loadSprite("/red/square", 8);
-
-        SPR_green_normal = loadSprite("/green/normal", 8);
-        SPR_green_square = loadSprite("/green/square", 10);
-
-        SPR_ground = loadSprite("ground", 4);
         SPR_wall = loadSprite("wall", 8);
         SPR_fire_lamp = loadSprite("fire_lamp", 5);
         SPR_flag = loadSprite("Flag", 6);
 
         SPR_stairs = loadSprite("Stairs");
-        SPR_box = loadSprite("Box");
+        SPR_stairsUp = loadSprite("StairsUp");
         SPR_key = loadSprite("Key");
         SPR_key_door = loadSprite("KeyDoor");
         SPR_switch_door = loadSprite("SwitchDoor");
         SPR_switch = loadSprite("Switch");
-        SPR_cursor = loadSprite("Cursor");
         SPR_bolt = loadSprite("Bolt");
-        SPR_cf = loadSprite("cf",6);
+        SPR_cf = loadSprite("cf2",6);
+
+        playerUp = loadSprite("/player/5",6);
+        playerDown = loadSprite("/player/3",6);
+        playerLeft = loadSprite("/player/left",6);
+        playerRight = loadSprite("/player/4",6);
     }
 
     private BufferedImage loadSprite(String name) {

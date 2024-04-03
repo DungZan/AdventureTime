@@ -35,7 +35,7 @@ public class Player extends Entity {
         solidArea.height=32;
     }
     public void setDefaultPosition() {
-        this.setWolrdX(GameFrame.TILE_SIZE*23);
+        this.setWolrdX(GameFrame.TILE_SIZE*27);
         this.setWolrdY(GameFrame.TILE_SIZE*25);
         this.setSpeed(5);
     }
@@ -125,6 +125,19 @@ public class Player extends Entity {
                         speed+=3;
                     gamePanel.ui.showMessage("You got boots");
                     break;
+                case "stairs":
+                        gamePanel.tileManager.loadMap("dungeon01");
+                        System.out.println("Dungeon");
+                        setDefaultPosition();
+                        gamePanel.setupDungeon();
+                    break;
+                case "stairsUp":
+                    gamePanel.tileManager.loadMap("world01");
+                    System.out.println("Dungeon");
+                    gamePanel.setupDungeon();
+                    setDefaultPosition();
+                    gamePanel.clearObjects();
+                    break;
             }
         }
 
@@ -134,39 +147,38 @@ public class Player extends Entity {
         switch (direction){
             case "right":
                 if (test==1)
-                    image = SPR_blue_square[0];
+                    image = playerRight[0];
                 if (test==2)
-                    image = SPR_blue_square[1];
+                    image = playerRight[1];
                 if (test==3)
-                    image = SPR_blue_square[2];
+                    image = playerRight[2];
                 break;
             case "left":
                 if (test==1)
-                    image = SPR_blue_square[0];
+                    image = playerLeft[0];
                 if (test==2)
-                    image = SPR_blue_square[1];
+                    image = playerLeft[1];
                 if (test==3)
-                    image = SPR_blue_square[2];
+                    image = playerLeft[2];
                 break;
             case "up":
                 if (test==1)
-                    image = SPR_blue_square[0];
+                    image = playerUp[0];
                 if (test==2)
-                    image = SPR_blue_square[1];
+                    image = playerUp[1];
                 if (test==3)
-                    image = SPR_blue_square[2];
+                    image = playerUp[2];
                 break;
             case "down":
                 if (test==1)
-                    image = SPR_blue_square[0];
+                    image = playerDown[0];
                 if (test==2)
-                    image = SPR_blue_square[1];
+                    image = playerDown[1];
                 if (test==3)
-                    image = SPR_blue_square[2];
+                    image = playerDown[2];
                 break;
         }
-        g2.drawImage(image,screenX,screenY,GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
-        //g2.drawImage(image,screenX,screenY, GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
+        g2.drawImage(image,screenX,screenY,34,50,null);
 
     }
 

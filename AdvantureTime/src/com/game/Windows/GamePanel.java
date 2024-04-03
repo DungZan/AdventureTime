@@ -21,7 +21,7 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     private InputManager inputManager = new InputManager();
     //player component
     public Player player = new Player(this,inputManager);
-    TileManager tileManager = new TileManager(this);
+    public TileManager tileManager = new TileManager(this);
     //collision checker
     public CollisionChecker collisionChecker = new CollisionChecker(this);
     public UI ui = new UI(this);
@@ -39,13 +39,12 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     public int gameState;
     public static final int menuState =0;
     public static final int playState =1;
-    public static final int pauseState =2;
-    public static final int aboutState =3;
+    public static final int aboutState =2;
     public GamePanel(){
         this.setBackground(Color.darkGray);
         ImageManager1 imageManager1 = new ImageManager1();
         animation[0].setDelay(100);
-        animation[0].setFrames(SPR_flag);
+        animation[0].setFrames(SPR_cf);
         Timer timer = new Timer(10,e -> animation[0].update());
         timer.start();
     }
@@ -53,6 +52,15 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
         assetSetter.setObjects();
         playMusic(1);
         gameState = menuState;
+    }
+    public void setupDungeon(){
+        assetSetter.setObjectDungeon();
+        gameState = playState;
+    }
+    public void clearObjects(){
+        for (int i=0;i<obj.length;i++){
+            obj[i] = null;
+        }
     }
     public void update(){
         if (gameState == playState){
@@ -80,7 +88,8 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
             }
             //draw player
             player.draw(g2);
-            g2.drawImage(animation[0].getImage(),26*GameFrame.TILE_SIZE-player.getWorldX() + player.screenX,27*GameFrame.TILE_SIZE-player.getWorldY() + player.screenY,48,48,null);
+            // draw decoration
+            //g2.drawImage(animation[0].getImage(),26*GameFrame.TILE_SIZE-player.getWorldX() + player.screenX,27*GameFrame.TILE_SIZE-player.getWorldY() + player.screenY,null);
             //draw UI
             ui.draw(g2);
             g2.dispose();

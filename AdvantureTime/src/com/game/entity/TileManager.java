@@ -18,14 +18,14 @@ public class TileManager {
     public int[][] mapTileNum;
     public TileManager(GamePanel gP) {
             this.gamePanel = gP;
-            tiles = new Tile[38];
+            tiles = new Tile[50];
             mapTileNum = new int[gamePanel.maxWorldCol][gamePanel.maxWorldRow];
             this.getImageMap();
-            this.loadMap();
+            this.loadMap("world03");
     }
-    public void loadMap(){
+    public void loadMap(String filename){
         try {
-            InputStream inputStream = getClass().getResourceAsStream("/com/game/data/world03.txt");
+            InputStream inputStream = getClass().getResourceAsStream("/com/game/data/"+filename+".txt");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             int col=0;
             int row=0;
@@ -82,12 +82,23 @@ public class TileManager {
             setupImage(29,"029",true);
             setupImage(30,"030",true);
             setupImage(31,"031",true);
-            setupImage(32,"032",false);
+            setupImage(32,"032",true);
             setupImage(33,"033",false);
             setupImage(34,"034",false);
             setupImage(35,"035",false);
             setupImage(36,"036",false);
             setupImage(37,"037",false);
+            setupImage(38,"038",false);
+            setupImage(39,"039",false);
+            setupImage(40,"040",true);
+            setupImage(41,"041",true);
+            setupImage(42,"042",true);
+            setupImage(43,"043",true);
+            setupImage(44,"044",true);
+            setupImage(45,"045",true);
+            setupImage(46,"046",false);
+            setupImage(47,"047",false);
+            setupImage(48,"048",true);
 
         }
         public void setupImage(int index,String path,boolean collision){

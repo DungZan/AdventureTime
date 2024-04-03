@@ -12,11 +12,11 @@ public class InputManager {
                 case KeyEvent.VK_W:
                     gamePanel.ui.commandNum--;
                     if (gamePanel.ui.commandNum<0)
-                        gamePanel.ui.commandNum=2;
+                        gamePanel.ui.commandNum=3;
                     break;
                 case KeyEvent.VK_S:
                     gamePanel.ui.commandNum++;
-                    if (gamePanel.ui.commandNum>2)
+                    if (gamePanel.ui.commandNum>3)
                         gamePanel.ui.commandNum=0;
                     break;
                 case KeyEvent.VK_ENTER:
@@ -28,6 +28,12 @@ public class InputManager {
                     }
                     if (gamePanel.ui.commandNum==2){
                         System.exit(0);
+                    }
+                    if (gamePanel.ui.commandNum==3){
+                        if (!gamePanel.music.playing) {
+                            gamePanel.music.playSound();
+
+                        } else if (gamePanel.music.playing) {gamePanel.music.stop();}
                     }
                     break;
             }

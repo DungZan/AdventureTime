@@ -11,7 +11,6 @@ public class GameFrame extends JFrame {
     public static final int SC_HEIGHT=720;
     GamePanel gamePanel;
     public GameFrame(){
-
         Toolkit toolkit = this.getToolkit();
         Dimension dimension = toolkit.getScreenSize();
         this.setBounds((dimension.width-SC_WIDTH)/2,(dimension.height-SC_HEIGHT)/2,SC_WIDTH,SC_HEIGHT);
