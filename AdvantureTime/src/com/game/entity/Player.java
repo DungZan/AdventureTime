@@ -128,7 +128,7 @@ public class Player extends Entity {
                 case "stairs":
                         gamePanel.tileManager.loadMap("dungeon01");
                         System.out.println("Dungeon");
-                        setDefaultPosition();
+                        setDefaultPosition();//set player position
                         gamePanel.setupDungeon();
                     break;
                 case "stairsUp":
