@@ -14,8 +14,7 @@ public class Animation {
 
     private boolean playedOnce;
 
-    public Animation(GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
+    public Animation() {
         playedOnce = false;
     }
 

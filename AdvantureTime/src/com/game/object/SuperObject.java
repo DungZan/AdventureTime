@@ -15,13 +15,13 @@ public class SuperObject {
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
     public void draw(Graphics2D g2, GamePanel gamePanel){
-        int screenX = worldX - gamePanel.player.getWorldX() + gamePanel.player.screenX;
-        int screenY = worldY - gamePanel.player.getWorldY() + gamePanel.player.screenY;
+        int screenX = worldX - gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().screenX;
+        int screenY = worldY - gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().screenY;
 
-        if (worldX+ GameFrame.TILE_SIZE>gamePanel.player.getWorldX()- gamePanel.player.screenX &&
-                worldX-GameFrame.TILE_SIZE<gamePanel.player.getWorldX()+gamePanel.player.screenX &&
-                worldY+GameFrame.TILE_SIZE>gamePanel.player.getWorldY()-gamePanel.player.screenY &&
-                worldY-GameFrame.TILE_SIZE<gamePanel.player.getWorldY()+gamePanel.player.screenY){
+        if (worldX+ GameFrame.TILE_SIZE>gamePanel.getPlayer().getWorldX()- gamePanel.getPlayer().screenX &&
+                worldX-GameFrame.TILE_SIZE<gamePanel.getPlayer().getWorldX()+gamePanel.getPlayer().screenX &&
+                worldY+GameFrame.TILE_SIZE>gamePanel.getPlayer().getWorldY()-gamePanel.getPlayer().screenY &&
+                worldY-GameFrame.TILE_SIZE<gamePanel.getPlayer().getWorldY()+gamePanel.getPlayer().screenY){
             g2.drawImage(image,screenX,screenY, GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
         }
     }

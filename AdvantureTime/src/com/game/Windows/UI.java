@@ -11,13 +11,13 @@ import java.io.InputStream;
 import static com.game.effect.ImageManager1.*;
 
 public class UI {
-    GamePanel gamePanel;
-    Font pixelF,ariral_40;
-    Font ariral_80B,pixelF2;
-    Graphics2D g2;
-    boolean messageOn = false;
-    String message = "";
-    int messageTime = 0;
+    private GamePanel gamePanel;
+    private Font pixelF,ariral_40;
+    private Font ariral_80B,pixelF2;
+    private Graphics2D g2;
+    private boolean messageOn = false;
+    private String message = "";
+    private int messageTime = 0;
     int commandNum = 0;
     public UI(GamePanel gamePanel){
         this.gamePanel = gamePanel;
@@ -53,10 +53,10 @@ public class UI {
                 g2.setColor(Color.white);
                 g2.setFont(ariral_40);
                 g2.drawImage(keyImage,30,20,32,32,null);
-                g2.drawString("x" + gamePanel.player.hasKey,60,50);
+                g2.drawString("x" + gamePanel.getPlayer().hasKey,60,50);
 
                 g2.drawImage(bootsImage,30,70,32,32,null);
-                g2.drawString("x" + gamePanel.player.speed,60,100);
+                g2.drawString("x" + gamePanel.getPlayer().speed,60,100);
 
                 //show message
                 if (messageOn){
@@ -147,7 +147,7 @@ public class UI {
             g2.drawString(">",getXforCenter("Exit")-GameFrame.TILE_SIZE,GameFrame.SC_HEIGHT/2+210);
         }
         //sound
-        g2.drawImage(gamePanel.music.image,getXforCenter(" ")-15,GameFrame.SC_HEIGHT/2+250,48,48,null);
+        g2.drawImage(gamePanel.getMusic().image,getXforCenter(" ")-15,GameFrame.SC_HEIGHT/2+250,48,48,null);
         if (commandNum == 3){
             g2.setColor(Color.black);
             g2.drawString(">",getXforCenter(" ")-GameFrame.TILE_SIZE-15,GameFrame.SC_HEIGHT/2+290);

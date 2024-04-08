@@ -1,9 +1,10 @@
 package com.game.Windows;
 
-import com.game.effect.Animation;
 import com.game.effect.ImageManager1;
 import com.game.entity.Player;
 import com.game.entity.TileManager;
+import com.game.object.OBJ_Flag;
+import com.game.object.OBJ_campf;
 import com.game.object.SuperObject;
 
 import javax.swing.*;
@@ -11,30 +12,67 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static com.game.effect.ImageManager1.*;
-
 
 public class GamePanel extends JPanel implements Runnable,KeyListener {
-    public Animation[] animation = new Animation[]{new Animation(this)};
     private Thread thread;
     private boolean isRunning;
     private InputManager inputManager = new InputManager();
+
     //player component
-    public Player player = new Player(this,inputManager);
-    public TileManager tileManager = new TileManager(this);
+    private Player player;
+    private TileManager tileManager = new TileManager(this);
+
     //collision checker
-    public CollisionChecker collisionChecker = new CollisionChecker(this);
-    public UI ui = new UI(this);
-    public AssetSetter assetSetter = new AssetSetter(this);
-    public SuperObject obj[] = new SuperObject[10];
+    private CollisionChecker collisionChecker = new CollisionChecker(this);
+    private UI ui = new UI(this);
+    private AssetSetter assetSetter = new AssetSetter(this);
+    private SuperObject obj[] = new SuperObject[10];
+
     //world component setting
-    public final int maxWorldCol=50;
-    public final int maxWorldRow=50;
-    public final int WorldWidth=maxWorldCol*GameFrame.TILE_SIZE;
-    public final int WorldHeight=maxWorldRow*GameFrame.TILE_SIZE;
+    private final int maxWorldCol=50;
+    private final int maxWorldRow=50;
+
     //sound
-    Sound music = new Sound();
-    Sound se = new Sound();
+    private Sound music = new Sound();
+    private Sound se = new Sound();
+    //animation obj
+    private OBJ_Flag flag;
+    private OBJ_campf campf;
+
+    public Player getPlayer() {
+        return player;
+    }
+    public TileManager getTileManager() {
+        return tileManager;
+    }
+    public CollisionChecker getCollisionChecker() {
+        return collisionChecker;
+    }
+    public UI getUi() {
+        return ui;
+    }
+    public SuperObject[] getObj() {
+        return obj;
+    }
+    public int getMaxWorldCol() {
+        return maxWorldCol;
+    }
+    public int getMaxWorldRow() {
+        return maxWorldRow;
+    }
+    public Sound getSe() {
+        return se;
+    }
+    public Sound getMusic() {
+        return music;
+    }
+    public OBJ_Flag getFlag() {
+        return flag;
+    }
+    public OBJ_campf getCampf() {
+        return campf;
+    }
+
     //game state
     public int gameState;
     public static final int menuState =0;
@@ -43,10 +81,9 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     public GamePanel(){
         this.setBackground(Color.darkGray);
         ImageManager1 imageManager1 = new ImageManager1();
-        animation[0].setDelay(100);
-        animation[0].setFrames(SPR_cf);
-        Timer timer = new Timer(10,e -> animation[0].update());
-        timer.start();
+        player = new Player(this,inputManager);
+        flag = new OBJ_Flag();
+        campf = new OBJ_campf();
     }
     public void setupGame(){
         assetSetter.setObjects();
@@ -65,6 +102,8 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     public void update(){
         if (gameState == playState){
             player.update();
+            flag.update();
+            campf.update();
         }
         if (gameState == menuState){
             //menu
@@ -88,8 +127,6 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
             }
             //draw player
             player.draw(g2);
-            // draw decoration
-            //g2.drawImage(animation[0].getImage(),26*GameFrame.TILE_SIZE-player.getWorldX() + player.screenX,27*GameFrame.TILE_SIZE-player.getWorldY() + player.screenY,null);
             //draw UI
             ui.draw(g2);
             g2.dispose();
@@ -166,3 +203,4 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
         inputManager.processKeyReleased(e.getKeyCode(),this);
     }
 }
+

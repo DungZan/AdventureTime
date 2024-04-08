@@ -10,30 +10,30 @@ public class InputManager {
         if (gamePanel.gameState == gamePanel.menuState){
             switch (keyCode){
                 case KeyEvent.VK_W:
-                    gamePanel.ui.commandNum--;
-                    if (gamePanel.ui.commandNum<0)
-                        gamePanel.ui.commandNum=3;
+                    gamePanel.getUi().commandNum--;
+                    if (gamePanel.getUi().commandNum<0)
+                        gamePanel.getUi().commandNum=3;
                     break;
                 case KeyEvent.VK_S:
-                    gamePanel.ui.commandNum++;
-                    if (gamePanel.ui.commandNum>3)
-                        gamePanel.ui.commandNum=0;
+                    gamePanel.getUi().commandNum++;
+                    if (gamePanel.getUi().commandNum>3)
+                        gamePanel.getUi().commandNum=0;
                     break;
                 case KeyEvent.VK_ENTER:
-                    if (gamePanel.ui.commandNum==0){
+                    if (gamePanel.getUi().commandNum==0){
                         gamePanel.gameState = gamePanel.playState;
                     }
-                    if (gamePanel.ui.commandNum==1){
+                    if (gamePanel.getUi().commandNum==1){
                         gamePanel.gameState = gamePanel.aboutState;
                     }
-                    if (gamePanel.ui.commandNum==2){
+                    if (gamePanel.getUi().commandNum==2){
                         System.exit(0);
                     }
-                    if (gamePanel.ui.commandNum==3){
-                        if (!gamePanel.music.playing) {
-                            gamePanel.music.playSound();
+                    if (gamePanel.getUi().commandNum==3){
+                        if (!gamePanel.getMusic().playing) {
+                            gamePanel.getMusic().playSound();
 
-                        } else if (gamePanel.music.playing) {gamePanel.music.stop();}
+                        } else if (gamePanel.getMusic().playing) {gamePanel.stopMusic();}
                     }
                     break;
             }

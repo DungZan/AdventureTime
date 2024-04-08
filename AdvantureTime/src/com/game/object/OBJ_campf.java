@@ -1,27 +1,25 @@
 package com.game.object;
 
-
 import com.game.Windows.GameFrame;
 import com.game.Windows.GamePanel;
 import com.game.effect.Animation;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
-import static com.game.effect.ImageManager1.SPR_flag;
+import static com.game.effect.ImageManager1.SPR_cf;
 
-public class OBJ_Flag extends SuperObject{
-    Animation flag = new Animation();
-    public OBJ_Flag( ){
-        this.name = "flag";
+public class OBJ_campf extends SuperObject{
+    Animation campfire = new Animation();
+    public OBJ_campf( ){
+        this.name = "campfire";
         this.collision = true;
-        flag.setFrames(SPR_flag);
-        flag.setDelay(100);
+        campfire.setFrames(SPR_cf);
+        campfire.setDelay(100);
         this.worldX=27* GameFrame.TILE_SIZE;
-        this.worldY=27* GameFrame.TILE_SIZE;
+        this.worldY=26* GameFrame.TILE_SIZE;
     }
     public void update(){
-        flag.update();
+        campfire.update();
     }
     public void draw(Graphics2D g2, GamePanel gamePanel){
         int screenX = worldX - gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().screenX;
@@ -31,8 +29,7 @@ public class OBJ_Flag extends SuperObject{
                 worldX-GameFrame.TILE_SIZE<gamePanel.getPlayer().getWorldX()+gamePanel.getPlayer().screenX &&
                 worldY+GameFrame.TILE_SIZE>gamePanel.getPlayer().getWorldY()-gamePanel.getPlayer().screenY &&
                 worldY-GameFrame.TILE_SIZE<gamePanel.getPlayer().getWorldY()+gamePanel.getPlayer().screenY){
-            g2.drawImage(flag.getImage(),screenX,screenY, GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
+            g2.drawImage(campfire.getImage(),screenX,screenY, GameFrame.TILE_SIZE,GameFrame.TILE_SIZE,null);
         }
     }
-
 }

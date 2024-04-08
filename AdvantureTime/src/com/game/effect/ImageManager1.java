@@ -20,6 +20,7 @@ public class ImageManager1 {
 
     public static BufferedImage[] playerUp, playerDown;
     public static BufferedImage[] playerLeft, playerRight;
+    public static BufferedImage[] player;
 
     public static BufferedImage[] SPR_wall;
     public static BufferedImage[] SPR_fire_lamp;
@@ -59,12 +60,13 @@ public class ImageManager1 {
         SPR_switch_door = loadSprite("SwitchDoor");
         SPR_switch = loadSprite("Switch");
         SPR_bolt = loadSprite("Bolt");
-        SPR_cf = loadSprite("cf2",6);
+        SPR_cf = loadSprite("cf",6);
 
         playerUp = loadSprite("/player/5",6);
         playerDown = loadSprite("/player/3",6);
         playerLeft = loadSprite("/player/left",6);
         playerRight = loadSprite("/player/4",6);
+        player = loadSprite("/player/1",6);
     }
 
     private BufferedImage loadSprite(String name) {
