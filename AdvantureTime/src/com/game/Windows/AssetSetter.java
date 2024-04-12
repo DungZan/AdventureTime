@@ -88,5 +88,10 @@ public class AssetSetter {
         gamePanel.getObj()[9].worldX = 38*GameFrame.TILE_SIZE;
         gamePanel.getObj()[9].worldY = 25*GameFrame.TILE_SIZE;
     }
+    public void setObjectWin(){
+        gamePanel.getObj()[0] = new OBJ_chest();
+        gamePanel.getObj()[0].worldX = 26*GameFrame.TILE_SIZE;
+        gamePanel.getObj()[0].worldY = 26*GameFrame.TILE_SIZE;
+    }
 
 }

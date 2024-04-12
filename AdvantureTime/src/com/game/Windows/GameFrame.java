@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameFrame extends JFrame {
-    public static final int maxScreenCol = 16;
-    public static final int maxScreenRow = 12;
     public static final int TILE_SIZE = 48;
     public static final int SC_WIDTH=1080;
     public static final int SC_HEIGHT=720;

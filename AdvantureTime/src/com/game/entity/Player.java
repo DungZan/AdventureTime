@@ -11,24 +11,19 @@ import java.awt.image.BufferedImage;
 import static com.game.effect.ImageManager1.*;
 
 public class Player extends Entity {
-    InputManager inputManager;
-    public final int screenX=GameFrame.SC_WIDTH/2-(GameFrame.TILE_SIZE/2);
-    public final int screenY=GameFrame.SC_HEIGHT/2-(GameFrame.TILE_SIZE/2);
+    private InputManager inputManager;
+    private final int screenX=GameFrame.SC_WIDTH/2-(GameFrame.TILE_SIZE/2);
+    private final int screenY=GameFrame.SC_HEIGHT/2-(GameFrame.TILE_SIZE/2);
     public int hasKey=0;
-
     private int playerState=0;
-
     private Animation normal,left,right,up,down;
 
-    public int getPlayerState() {
-        return playerState;
-    }
-    public void setPlayerState(int playerState) {
-        this.playerState = playerState;
+    public int getScreenX() {
+        return screenX;
     }
 
-    public Animation getAniNormal() {
-        return normal;
+    public int getScreenY() {
+        return screenY;
     }
 
     public Player(GamePanel gamePanel, InputManager inputManager) {
@@ -78,7 +73,6 @@ public class Player extends Entity {
                inputManager.isUp==true ||
                inputManager.isDown==true) {
             playerState =1;
-
             if (inputManager.isRight) {
                 // moveRight();
                 direction = "right";
@@ -160,10 +154,23 @@ public class Player extends Entity {
                     break;
                 case "stairsUp":
                     gamePanel.getTileManager().loadMap("world01");
-                    System.out.println("Dungeon");
                     gamePanel.setupDungeon();
                     setDefaultPosition();
                     gamePanel.clearObjects();
+                    gamePanel.setupWin();
+                    break;
+                case "campf":
+                    gamePanel.getObj()[index]=null;
+                    gamePanel.getUi().showMessage("You got a campfire");
+                    break;
+                case "flag":
+                    gamePanel.getObj()[index]=null;
+                    gamePanel.getUi().showMessage("You got a flag");
+                    break;
+                case "chest":
+                    gamePanel.getObj()[index]=null;
+                    gamePanel.getUi().showMessage("You Win!");
+                    gamePanel.getUi().showMessage("End game");
                     break;
             }
         }

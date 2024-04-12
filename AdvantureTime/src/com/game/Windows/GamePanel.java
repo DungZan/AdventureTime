@@ -94,6 +94,10 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
         assetSetter.setObjectDungeon();
         gameState = playState;
     }
+    public void setupWin(){
+        assetSetter.setObjectWin();
+        gameState = playState;
+    }
     public void clearObjects(){
         for (int i=0;i<obj.length;i++){
             obj[i] = null;
