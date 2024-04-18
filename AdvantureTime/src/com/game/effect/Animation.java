@@ -1,11 +1,7 @@
 package com.game.effect;
-
-import com.game.Windows.GamePanel;
-
 import java.awt.image.BufferedImage;
 
 public class Animation {
-    GamePanel gamePanel;
     private BufferedImage[] frames;
     private int currentFrame;
 

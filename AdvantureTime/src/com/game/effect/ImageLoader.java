@@ -1,4 +1,3 @@
-/* Author: NgTienHungg */
 package com.game.effect;
 
 import java.awt.Graphics;

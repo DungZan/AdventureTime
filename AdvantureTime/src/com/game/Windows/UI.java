@@ -45,18 +45,18 @@ public class UI {
          }
          if (gamePanel.gameState == gamePanel.playState){
                 OBJ_Key obj_key = new OBJ_Key();
-                BufferedImage keyImage = obj_key.image;
+                BufferedImage keyImage = obj_key.getImage();
                 OBJ_Boots obj_boots = new OBJ_Boots();
-                BufferedImage bootsImage = obj_boots.image;
+                BufferedImage bootsImage = obj_boots.getImage();
 
                 //g2.drawImage(gamePanel.animation.getImage(),100,100,48,48,null);
                 g2.setColor(Color.white);
                 g2.setFont(ariral_40);
                 g2.drawImage(keyImage,30,20,32,32,null);
-                g2.drawString("x" + gamePanel.getPlayer().hasKey,60,50);
+                g2.drawString("x" + gamePanel.getPlayer().getHasKey(),60,50);
 
                 g2.drawImage(bootsImage,30,70,32,32,null);
-                g2.drawString("x" + gamePanel.getPlayer().speed,60,100);
+                g2.drawString("x" + gamePanel.getPlayer().getSpeed(),60,100);
 
                 //show message
                 if (messageOn){

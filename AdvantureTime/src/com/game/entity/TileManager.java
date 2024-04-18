@@ -14,8 +14,8 @@ import java.io.InputStreamReader;
 
 public class TileManager {
     GamePanel gamePanel;
-    public Tile[] tiles;
-    public int[][] mapTileNum;
+    protected Tile[] tiles;
+    protected int[][] mapTileNum;
     public TileManager(GamePanel gP) {
             this.gamePanel = gP;
             tiles = new Tile[50];
@@ -23,6 +23,23 @@ public class TileManager {
             this.getImageMap();
             this.loadMap("world03");
     }
+
+    public Tile[] getTiles() {
+        return tiles;
+    }
+
+    public void setTiles(Tile[] tiles) {
+        this.tiles = tiles;
+    }
+
+    public int[][] getMapTileNum() {
+        return mapTileNum;
+    }
+
+    public void setMapTileNum(int[][] mapTileNum) {
+        this.mapTileNum = mapTileNum;
+    }
+
     public void loadMap(String filename){
         try {
             InputStream inputStream = getClass().getResourceAsStream("/com/game/data/"+filename+".txt");
@@ -107,7 +124,7 @@ public class TileManager {
                 tiles[index] = new Tile();
                 tiles[index].setImage(ImageIO.read(getClass().getResourceAsStream("/resources/tiles/"+path+".png")));
                 tiles[index].setImage(utilityTool.scaleImage(tiles[index].getImage(),GameFrame.TILE_SIZE,GameFrame.TILE_SIZE));
-                tiles[index].collision = collision;
+                tiles[index].setCollision(collision);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

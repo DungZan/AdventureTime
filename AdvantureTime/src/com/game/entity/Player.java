@@ -6,7 +6,6 @@ import com.game.Windows.InputManager;
 import com.game.effect.Animation;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 import static com.game.effect.ImageManager1.*;
 
@@ -14,7 +13,7 @@ public class Player extends Entity {
     private InputManager inputManager;
     private final int screenX=GameFrame.SC_WIDTH/2-(GameFrame.TILE_SIZE/2);
     private final int screenY=GameFrame.SC_HEIGHT/2-(GameFrame.TILE_SIZE/2);
-    public int hasKey=0;
+    private int hasKey=0;
     private int playerState=0;
     private Animation normal,left,right,up,down;
 
@@ -26,17 +25,22 @@ public class Player extends Entity {
         return screenY;
     }
 
+    public int getHasKey() {
+        return hasKey;
+    }
+
+
     public Player(GamePanel gamePanel, InputManager inputManager) {
         super(gamePanel);
         this.gamePanel = gamePanel;
         this.inputManager = inputManager;
         this.setDefaultPosition();
-        direction ="down";
+        setDirection("down");
         solidArea = new Rectangle();
         solidArea.x=8;
         solidArea.y=16;
-        solidDefaultX = solidArea.x;
-        solidDefaultY = solidArea.y;
+        setSolidDefaultX(solidArea.x);
+        setSolidDefaultY(solidArea.y);
         solidArea.width=32;
         solidArea.height=32;
 
@@ -60,6 +64,7 @@ public class Player extends Entity {
         down.setFrames(playerDown);
         down.setDelay(100);
 
+
     }
     public void setDefaultPosition() {
         this.setWolrdX(GameFrame.TILE_SIZE*27);
@@ -75,34 +80,54 @@ public class Player extends Entity {
             playerState =1;
             if (inputManager.isRight) {
                 // moveRight();
-                direction = "right";
+                setDirection("right");
                 right.update();
             }
             if (inputManager.isLeft) {
                 // moveLeft();
-                direction = "left";
+                setDirection("left");
                 left.update();
             }
             if (inputManager.isUp) {
                 // moveUp();
-                direction = "up";
+                setDirection("up");
                 up.update();
             }
             if (inputManager.isDown) {
                 // moveDown();
-                direction = "down";
+                setDirection("down");
                 down.update();
+            }
+            if (inputManager.isRight && inputManager.isUp) {
+               // moveRightUp();
+               setDirection("rightUp");
+
+           }
+            if (inputManager.isRight && inputManager.isDown) {
+               // moveRightDown();
+               setDirection("rightDown");
+
+           }
+            if (inputManager.isLeft && inputManager.isUp) {
+               // moveLeftUp();
+               setDirection("leftUp");
+
+           }
+            if (inputManager.isLeft && inputManager.isDown) {
+               // moveLeftDown();
+               setDirection("leftDown");
+
             }
 
             // check collision
-            collisionOn = false;
+            setCollisionOn(false);
             gamePanel.getCollisionChecker().checkTile(this);
             // check object
             int objIndex = gamePanel.getCollisionChecker().checkObject(this, true);
             pickUpObject(objIndex);
             // if collision false, player can move
-            if (collisionOn == false) {
-                switch (direction) {
+            if (isCollisionOn() == false) {
+                switch (getDirection()) {
                     case "up":
                         moveUp();
                         break;
@@ -115,6 +140,20 @@ public class Player extends Entity {
                     case "right":
                         moveRight();
                         break;
+                    case "rightUp":
+                        moveRightUp();
+                        break;
+                    case "rightDown":
+                        moveRightDown();
+                        break;
+                    case "leftUp":
+                        moveLeftUp();
+                        break;
+                    case "leftDown":
+                        moveLeftDown();
+                        break;
+                    default:
+
                 }
             }
        } else {playerState =0;}
@@ -122,7 +161,7 @@ public class Player extends Entity {
     }
     public void pickUpObject(int index){
         if (index!=999){
-            String objName = gamePanel.getObj()[index].name;
+            String objName = gamePanel.getObj()[index].getName();
             switch (objName){
                 case "key":
                     gamePanel.playSE(2);
@@ -143,7 +182,7 @@ public class Player extends Entity {
                 case "Boots":
                     gamePanel.playSE(3);
                         gamePanel.getObj()[index]=null;
-                        speed+=3;
+                        setSpeed(getSpeed()+3);
                     gamePanel.getUi().showMessage("You got boots");
                     break;
                 case "stairs":
@@ -178,7 +217,7 @@ public class Player extends Entity {
     }
     public void draw(Graphics2D g2){
         if (playerState == 1){
-            switch (direction){
+            switch (getDirection()){
                 case "right":
                     g2.drawImage(right.getImage(),screenX,screenY,34,50,null);
                     break;
@@ -190,6 +229,18 @@ public class Player extends Entity {
                     break;
                 case "down":
                     g2.drawImage(down.getImage(),screenX,screenY,34,50,null);
+                    break;
+                case "rightUp":
+                    g2.drawImage(right.getImage(),screenX,screenY,34,50,null);
+                    break;
+                case "rightDown":
+                    g2.drawImage(right.getImage(),screenX,screenY,34,50,null);
+                    break;
+                case "leftUp":
+                    g2.drawImage(left.getImage(),screenX,screenY,34,50,null);
+                    break;
+                case "leftDown":
+                    g2.drawImage(left.getImage(),screenX,screenY,34,50,null);
                     break;
             }
         }
