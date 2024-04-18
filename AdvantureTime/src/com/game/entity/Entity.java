@@ -20,31 +20,24 @@ public class Entity {
     public Rectangle getSolidArea() {
         return solidArea;
     }
-
     public String getDirection() {
         return direction;
     }
-
     public void setDirection(String direction) {
         this.direction = direction;
     }
-
     public int getSolidDefaultY() {
         return solidDefaultY;
     }
-
     public int getSolidDefaultX() {
         return solidDefaultX;
     }
-
     public void setSolidDefaultY(int solidDefaultY) {
         this.solidDefaultY = solidDefaultY;
     }
-
     public void setSolidDefaultX(int solidDefaultX) {
         this.solidDefaultX = solidDefaultX;
     }
-
     public Entity(GamePanel gamePanel){
         this.gamePanel = gamePanel;
     }
@@ -85,23 +78,18 @@ public class Entity {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
-
     public int getWolrdX() {
         return wolrdX;
     }
-
     public int getWolrdY() {
         return wolrdY;
     }
-
     public int getSpeed() {
         return speed;
     }
-
     public boolean isCollisionOn() {
         return collisionOn;
     }
-
     public void setCollisionOn(boolean collisionOn) {
         this.collisionOn = collisionOn;
     }
