@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     private CollisionChecker collisionChecker = new CollisionChecker(this);
     private UI ui = new UI(this);
     private AssetSetter assetSetter = new AssetSetter(this);
-    private SuperObject obj[] = new SuperObject[10];
+    private SuperObject obj[] = new SuperObject[11];
 
     //world component setting
     private final int maxWorldCol=50;

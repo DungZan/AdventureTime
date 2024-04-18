@@ -9,9 +9,9 @@ import static com.game.effect.ImageManager1.SPR_sound_off;
 import static com.game.effect.ImageManager1.SPR_sound_on;
 
 public class Sound {
-    public Clip clip;
-    public boolean playing=true;
-    public BufferedImage image;
+    private Clip clip;
+    private boolean playing=true;
+    private BufferedImage image;
     URL soundURL[]=new URL[30];
     public Sound(){
         soundURL[0]=getClass().getResource("/resources/sounds/door/0.wav");
@@ -20,6 +20,31 @@ public class Sound {
         soundURL[3]=getClass().getResource("/resources/sounds/MoveA.wav");
         soundURL[4]=getClass().getResource("/resources/sounds/MoveDownStairs.wav");
     }
+
+    public Clip getClip() {
+        return clip;
+    }
+
+    public void setClip(Clip clip) {
+        this.clip = clip;
+    }
+
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    public void setPlaying(boolean playing) {
+        this.playing = playing;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
     public void setFile(int i){
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL[i]);

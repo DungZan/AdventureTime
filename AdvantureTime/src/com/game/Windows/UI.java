@@ -147,7 +147,7 @@ public class UI {
             g2.drawString(">",getXforCenter("Exit")-GameFrame.TILE_SIZE,GameFrame.SC_HEIGHT/2+210);
         }
         //sound
-        g2.drawImage(gamePanel.getMusic().image,getXforCenter(" ")-15,GameFrame.SC_HEIGHT/2+250,48,48,null);
+        g2.drawImage(gamePanel.getMusic().getImage(),getXforCenter(" ")-15,GameFrame.SC_HEIGHT/2+250,48,48,null);
         if (commandNum == 3){
             g2.setColor(Color.black);
             g2.drawString(">",getXforCenter(" ")-GameFrame.TILE_SIZE-15,GameFrame.SC_HEIGHT/2+290);

@@ -20,15 +20,12 @@ public class Player extends Entity {
     public int getScreenX() {
         return screenX;
     }
-
     public int getScreenY() {
         return screenY;
     }
-
     public int getHasKey() {
         return hasKey;
     }
-
 
     public Player(GamePanel gamePanel, InputManager inputManager) {
         super(gamePanel);

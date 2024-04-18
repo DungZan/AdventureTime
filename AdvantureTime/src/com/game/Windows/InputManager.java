@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 public class InputManager {
     GamePanel gamePanel;
-    public boolean isRight,isLeft,isUp,isDown,isSpace,isEnter;
+    public static boolean isRight,isLeft,isUp,isDown,isSpace,isEnter;
     public void processKeyPressed(int keyCode,GamePanel gamePanel){
         this.gamePanel= gamePanel;
         if (gamePanel.gameState == gamePanel.menuState){
@@ -30,10 +30,10 @@ public class InputManager {
                         System.exit(0);
                     }
                     if (gamePanel.getUi().commandNum==3){
-                        if (!gamePanel.getMusic().playing) {
+                        if (!gamePanel.getMusic().isPlaying()) {
                             gamePanel.getMusic().playSound();
 
-                        } else if (gamePanel.getMusic().playing) {gamePanel.stopMusic();}
+                        } else if (gamePanel.getMusic().isPlaying()) {gamePanel.stopMusic();}
                     }
                     break;
             }

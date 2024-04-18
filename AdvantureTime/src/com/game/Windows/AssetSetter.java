@@ -76,6 +76,10 @@ public class AssetSetter {
         gamePanel.getObj()[6].setWorldX(19*GameFrame.TILE_SIZE);
         gamePanel.getObj()[6].setWorldY(47*GameFrame.TILE_SIZE);
 
+        gamePanel.getObj()[10] = new OBJ_Key();
+        gamePanel.getObj()[10].setWorldX(40*GameFrame.TILE_SIZE);
+        gamePanel.getObj()[10].setWorldY(33*GameFrame.TILE_SIZE);
+
         gamePanel.getObj()[7] = new OBJ_Door();
         gamePanel.getObj()[7].setWorldX(39*GameFrame.TILE_SIZE);
         gamePanel.getObj()[7].setWorldY(13*GameFrame.TILE_SIZE);
