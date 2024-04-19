@@ -76,42 +76,34 @@ public class Player extends Entity {
                inputManager.isDown==true) {
             playerState =1;
             if (inputManager.isRight) {
-                // moveRight();
                 setDirection("right");
                 right.update();
             }
             if (inputManager.isLeft) {
-                // moveLeft();
                 setDirection("left");
                 left.update();
             }
             if (inputManager.isUp) {
-                // moveUp();
                 setDirection("up");
                 up.update();
             }
             if (inputManager.isDown) {
-                // moveDown();
                 setDirection("down");
                 down.update();
             }
             if (inputManager.isRight && inputManager.isUp) {
-               // moveRightUp();
                setDirection("rightUp");
 
            }
             if (inputManager.isRight && inputManager.isDown) {
-               // moveRightDown();
                setDirection("rightDown");
 
            }
             if (inputManager.isLeft && inputManager.isUp) {
-               // moveLeftUp();
                setDirection("leftUp");
 
            }
             if (inputManager.isLeft && inputManager.isDown) {
-               // moveLeftDown();
                setDirection("leftDown");
 
             }
@@ -149,8 +141,6 @@ public class Player extends Entity {
                     case "leftDown":
                         moveLeftDown();
                         break;
-                    default:
-
                 }
             }
        } else {playerState =0;}
