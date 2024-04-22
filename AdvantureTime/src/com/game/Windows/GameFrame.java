@@ -3,10 +3,12 @@ package com.game.Windows;
 import javax.swing.*;
 import java.awt.*;
 
-public class GameFrame extends JFrame {
+public class
+GameFrame extends JFrame {
     public static final int TILE_SIZE = 48;
     public static final int SC_WIDTH=1080;
     public static final int SC_HEIGHT=720;
+    private ImageIcon icon = new ImageIcon("src/resources/sprites/player/1/1.png");
     GamePanel gamePanel;
     public GameFrame(){
         Toolkit toolkit = this.getToolkit();
@@ -20,6 +22,8 @@ public class GameFrame extends JFrame {
         this.setFocusable(true);
         setLocationRelativeTo(null);
         setResizable(false);
+        // icon
+        this.setIconImage(icon.getImage());
         gamePanel.setupGame();
     }
 
@@ -27,11 +31,5 @@ public class GameFrame extends JFrame {
         gamePanel.startGame();
     }
 
-
-    public static void main(String[] args) {
-        GameFrame game = new GameFrame();
-        game.setVisible(true);
-        game.startGame();
-    }
 
 }
