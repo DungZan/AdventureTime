@@ -4,7 +4,6 @@ import com.game.Windows.GameFrame;
 import com.game.Windows.GamePanel;
 import com.game.Windows.InputManager;
 import com.game.effect.Animation;
-import com.game.effect.SceneTransition;
 
 import java.awt.*;
 

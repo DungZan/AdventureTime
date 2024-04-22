@@ -28,17 +28,12 @@ public class TileManager {
         return tiles;
     }
 
-    public void setTiles(Tile[] tiles) {
-        this.tiles = tiles;
-    }
+
 
     public int[][] getMapTileNum() {
         return mapTileNum;
     }
 
-    public void setMapTileNum(int[][] mapTileNum) {
-        this.mapTileNum = mapTileNum;
-    }
 
     public void loadMap(String filename){
         try {

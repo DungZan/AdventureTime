@@ -1,11 +1,7 @@
 package com.game.entity;
 
 import com.game.Windows.GamePanel;
-
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import static com.game.effect.ImageManager1.*;
 import static java.lang.Math.sqrt;
 
 public class Entity {
@@ -54,20 +50,20 @@ public class Entity {
         wolrdX+=speed;
     }
     public void moveRightUp(){
-        wolrdX+=sqrt(speed*speed-(sqrt(speed*speed+speed*speed)/2)*(sqrt(speed*speed+speed*speed)/2));
-        wolrdY-=sqrt(speed*speed-(sqrt(speed*speed+speed*speed)/2)*(sqrt(speed*speed+speed*speed)/2));
+        wolrdX+=(sqrt(speed*speed+speed*speed)/2);
+        wolrdY-=(sqrt(speed*speed+speed*speed)/2);
     }
     public void moveRightDown(){
-        wolrdX+=sqrt(speed*speed-(sqrt(speed*speed+speed*speed)/2)*(sqrt(speed*speed+speed*speed)/2));;
-        wolrdY+=sqrt(speed*speed-(sqrt(speed*speed+speed*speed)/2)*(sqrt(speed*speed+speed*speed)/2));;
+        wolrdX+=(sqrt(speed*speed+speed*speed)/2);
+        wolrdY+=(sqrt(speed*speed+speed*speed)/2);
     }
     public void moveLeftUp(){
-        wolrdX-=sqrt(speed*speed-(sqrt(speed*speed+speed*speed)/2)*(sqrt(speed*speed+speed*speed)/2));;
-        wolrdY-=sqrt(speed*speed-(sqrt(speed*speed+speed*speed)/2)*(sqrt(speed*speed+speed*speed)/2));;
+        wolrdX-=(sqrt(speed*speed+speed*speed)/2);
+        wolrdY-=(sqrt(speed*speed+speed*speed)/2);
     }
     public void moveLeftDown(){
-        wolrdX-=sqrt(speed*speed-(sqrt(speed*speed+speed*speed)/2)*(sqrt(speed*speed+speed*speed)/2));;
-        wolrdY+=sqrt(speed*speed-(sqrt(speed*speed+speed*speed)/2)*(sqrt(speed*speed+speed*speed)/2));;
+        wolrdX-=(sqrt(speed*speed+speed*speed)/2);
+        wolrdY+=(sqrt(speed*speed+speed*speed)/2);
     }
     public void setWolrdX(int wolrdX) {
         this.wolrdX = wolrdX;
