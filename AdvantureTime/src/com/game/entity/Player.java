@@ -4,6 +4,7 @@ import com.game.Windows.GameFrame;
 import com.game.Windows.GamePanel;
 import com.game.Windows.InputManager;
 import com.game.effect.Animation;
+import com.game.effect.SceneTransition;
 
 import java.awt.*;
 
@@ -177,6 +178,7 @@ public class Player extends Entity {
                         System.out.println("Dungeon");
                         setDefaultPosition();//set player position
                         gamePanel.setupDungeon();
+                        gamePanel.getDownstairsSceneTransition().start();
                     break;
                 case "stairsUp":
                     gamePanel.getTileManager().loadMap("world01");
@@ -184,6 +186,7 @@ public class Player extends Entity {
                     setDefaultPosition();
                     gamePanel.clearObjects();
                     gamePanel.setupWin();
+                    gamePanel.getUpstairsSceneTransition().start();
                     break;
                 case "campf":
                     gamePanel.getObj()[index]=null;
@@ -195,8 +198,8 @@ public class Player extends Entity {
                     break;
                 case "chest":
                     gamePanel.getObj()[index]=null;
-                    gamePanel.getUi().showMessage("You Win!");
                     gamePanel.getUi().showMessage("End game");
+                    gamePanel.getCloseSceneTransition().start();
                     break;
             }
         }

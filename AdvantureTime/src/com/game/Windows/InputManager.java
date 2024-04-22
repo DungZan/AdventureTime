@@ -21,6 +21,7 @@ public class InputManager {
                     break;
                 case KeyEvent.VK_ENTER:
                     if (gamePanel.getUi().commandNum==0){
+                        gamePanel.getSceneTransition().start();
                         gamePanel.gameState = gamePanel.playState;
                     }
                     if (gamePanel.getUi().commandNum==1){

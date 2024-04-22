@@ -12,7 +12,9 @@ public class Sound {
     private Clip clip;
     private boolean playing=true;
     private BufferedImage image;
-    URL soundURL[]=new URL[30];
+    URL soundURL[]=new URL[5];
+    private FloatControl volumeControl;
+    private float volume = 1.0f; // Mức âm thanh mặc định
     public Sound(){
         soundURL[0]=getClass().getResource("/resources/sounds/door/0.wav");
         soundURL[1]=getClass().getResource("/resources/sounds/Background.wav");

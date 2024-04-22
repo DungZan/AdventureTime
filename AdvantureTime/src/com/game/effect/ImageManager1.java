@@ -29,11 +29,10 @@ public class ImageManager1 {
     public static BufferedImage SPR_stairsUp;
     public static BufferedImage SPR_key;
     public static BufferedImage SPR_key_door;
-    public static BufferedImage SPR_switch_door;
-    public static BufferedImage SPR_switch;
     public static BufferedImage SPR_bolt;
     public static BufferedImage[] SPR_cf;
     public static BufferedImage SPR_chest;
+    public static BufferedImage SPR_black;
 
     public ImageManager1() {
         loader = new ImageLoader();
@@ -61,6 +60,7 @@ public class ImageManager1 {
         SPR_bolt = loadSprite("Bolt");
         SPR_cf = loadSprite("cf",6);
         SPR_chest = loadSprite("Chest");
+        SPR_black = loadSprite("Black");
 
         playerUp = loadSprite("/player/5",6);
         playerDown = loadSprite("/player/3",6);

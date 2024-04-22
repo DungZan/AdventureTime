@@ -1,6 +1,7 @@
 package com.game.Windows;
 
 import com.game.effect.ImageManager1;
+import com.game.effect.SceneTransition;
 import com.game.entity.Player;
 import com.game.entity.TileManager;
 import com.game.object.OBJ_Flag;
@@ -27,6 +28,11 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     private UI ui = new UI(this);
     private AssetSetter assetSetter = new AssetSetter(this);
     private SuperObject obj[] = new SuperObject[11];
+    //scene transition
+    private SceneTransition sceneTransition = new SceneTransition(Color.BLACK, 3000);
+    private SceneTransition closeSceneTransition = new SceneTransition(Color.BLACK, 3000);
+    private SceneTransition upstairsSceneTransition = new SceneTransition(Color.BLACK, 3000);
+    private SceneTransition downstairsSceneTransition = new SceneTransition(Color.BLACK, 3000);
 
     //world component setting
     private final int maxWorldCol=50;
@@ -72,6 +78,19 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     public OBJ_campf getCampf() {
         return campf;
     }
+    public SceneTransition getSceneTransition() {
+        return sceneTransition;
+    }
+    public SceneTransition getCloseSceneTransition() {
+        return closeSceneTransition;
+    }
+    public SceneTransition getUpstairsSceneTransition() {
+        return upstairsSceneTransition;
+    }
+    public SceneTransition getDownstairsSceneTransition() {
+        return downstairsSceneTransition;
+    }
+
 
     //game state
     public int gameState;
@@ -84,6 +103,7 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
         player = new Player(this,inputManager);
         flag = new OBJ_Flag();
         campf = new OBJ_campf();
+
     }
     public void setupGame(){
         assetSetter.setObjects();
@@ -104,6 +124,10 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
         }
     }
     public void update(){
+        sceneTransition.update();
+        closeSceneTransition.update();
+        upstairsSceneTransition.update();
+        downstairsSceneTransition.update();
         if (gameState == playState){
             player.update();
             flag.update();
@@ -117,7 +141,19 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        if (gameState == menuState){
+        if (sceneTransition.isTransitioning()){
+            sceneTransition.draw(g2);
+            g2.drawString("LOADING...", GameFrame.SC_WIDTH/2-100, GameFrame.SC_HEIGHT/2-10);
+        }else if (closeSceneTransition.isTransitioning()){
+            closeSceneTransition.draw(g2);
+            g2.drawString("COMING SOON", GameFrame.SC_WIDTH/2-140, GameFrame.SC_HEIGHT/2-10);
+        } else if (downstairsSceneTransition.isTransitioning()) {
+            downstairsSceneTransition.draw(g2);
+            g2.drawString("DUNGEON...", GameFrame.SC_WIDTH/2-110, GameFrame.SC_HEIGHT/2-10);
+        } else if (upstairsSceneTransition.isTransitioning()) {
+            upstairsSceneTransition.draw(g2);
+            g2.drawString("UPSTAIRS...", GameFrame.SC_WIDTH/2-110, GameFrame.SC_HEIGHT/2-10);
+        } else if (gameState == menuState){
             //draw menu
             ui.draw(g2);
         }else {
