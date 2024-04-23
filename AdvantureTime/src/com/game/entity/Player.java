@@ -238,7 +238,6 @@ public class Player extends Entity {
         }
     }
 
-
     public int getWorldX() {
         return super.getWolrdX();
     }
