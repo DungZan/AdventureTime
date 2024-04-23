@@ -11,7 +11,7 @@ import static com.game.effect.ImageManager1.SPR_cf;
 public class OBJ_campf extends SuperObject{
     private Animation campfire = new Animation();
     public OBJ_campf( ){
-        this.setName("campfire");
+        this.setName("campf");
         this.setCollision(true);
         campfire.setFrames(SPR_cf);
         campfire.setDelay(100);

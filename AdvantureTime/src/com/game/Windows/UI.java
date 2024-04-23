@@ -58,6 +58,8 @@ public class UI {
                 g2.drawImage(bootsImage,30,70,32,32,null);
                 g2.drawString("x" + gamePanel.getPlayer().getSpeed(),60,100);
 
+                g2.drawString("Score: " + gamePanel.getPlayer().getScore(), 30, 150);
+
                 //show message
                 if (messageOn){
                     g2.drawString(message,GameFrame.TILE_SIZE*1,GameFrame.TILE_SIZE*4);

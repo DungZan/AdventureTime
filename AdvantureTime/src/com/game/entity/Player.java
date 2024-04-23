@@ -14,6 +14,7 @@ public class Player extends Entity {
     private final int screenX=GameFrame.SC_WIDTH/2-(GameFrame.TILE_SIZE/2);
     private final int screenY=GameFrame.SC_HEIGHT/2-(GameFrame.TILE_SIZE/2);
     private int hasKey=0;
+    private int score=0;
     private int playerState=0;
     private Animation normal,left,right,up,down;
 
@@ -153,6 +154,7 @@ public class Player extends Entity {
                 case "key":
                     gamePanel.playSE(2);
                     hasKey++;
+                    score+=100;
                     gamePanel.getObj()[index]=null;
                     gamePanel.getUi().showMessage("You got a key");
                     break;
@@ -162,6 +164,7 @@ public class Player extends Entity {
                         hasKey--;
                         gamePanel.getObj()[index]=null;
                         gamePanel.getUi().showMessage("You opened the door");
+                        score+=200;
                     }else {
                         gamePanel.getUi().showMessage("You need a key");
                     }
@@ -170,12 +173,14 @@ public class Player extends Entity {
                     gamePanel.playSE(3);
                         gamePanel.getObj()[index]=null;
                         setSpeed(getSpeed()+3);
+                        score+=100;
                     gamePanel.getUi().showMessage("You got boots");
                     break;
                 case "stairs":
                         gamePanel.getTileManager().loadMap("dungeon01");
                         System.out.println("Dungeon");
                         setDefaultPosition();//set player position
+                        score+=500;
                         gamePanel.setupDungeon();
                         gamePanel.getDownstairsSceneTransition().start();
                     break;
@@ -183,6 +188,7 @@ public class Player extends Entity {
                     gamePanel.getTileManager().loadMap("world01");
                     gamePanel.setupDungeon();
                     setDefaultPosition();
+                    score+=500;
                     gamePanel.clearObjects();
                     gamePanel.setupWin();
                     gamePanel.getUpstairsSceneTransition().start();
@@ -190,15 +196,18 @@ public class Player extends Entity {
                 case "campf":
                     gamePanel.getObj()[index]=null;
                     gamePanel.getUi().showMessage("You got a campfire");
+                    score+=100;
                     break;
                 case "flag":
                     gamePanel.getObj()[index]=null;
                     gamePanel.getUi().showMessage("You got a flag");
+                    score+=100;
                     break;
                 case "chest":
                     gamePanel.getObj()[index]=null;
                     gamePanel.getUi().showMessage("End game");
                     gamePanel.getCloseSceneTransition().start();
+                    score+=100;
                     break;
             }
         }
@@ -243,5 +252,13 @@ public class Player extends Entity {
     }
     public int getWorldY() {
         return super.getWolrdY();
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
